@@ -2,12 +2,12 @@ import { createTheme } from '@mui/material/styles';
 
 // Define your color palette
 export const PALETTE = {
-  main: '#75CFB8',      // Main accent
-  light: '#BBDFC8',     // Lighter shade or secondary accent
-  background: '#F0E5D8', // Page background
-  accent: '#FFC478',     // Secondary or contrasting accent
-  textPrimary: '#213547', // Dark text for light backgrounds
-  textSecondary: '#555', // Lighter text
+  main: '#00C47C',      // Vibrant green (primary)
+  light: '#1DE9B6',     // Lighter green accent
+  background: '#000000', // Black background
+  accent: '#00C47C',     // Use same green for accent/secondary
+  textPrimary: '#FFFFFF', // White text
+  textSecondary: '#FFFFFF', // White text for secondary as well
 };
 
 // Create a MUI theme instance
@@ -17,11 +17,11 @@ const theme = createTheme({
       main: PALETTE.main,
     },
     secondary: {
-      main: PALETTE.accent, // Using accent as secondary
+      main: PALETTE.light, // Lighter green as secondary
     },
     background: {
       default: PALETTE.background,
-      paper: '#FFFFFF', // You might want a different paper color
+      paper: '#111111', // Slightly lighter than black for paper
     },
     text: {
       primary: PALETTE.textPrimary,
@@ -32,13 +32,20 @@ const theme = createTheme({
     fontFamily: 'system-ui, Avenir, Helvetica, Arial, sans-serif',
     h1: {
       fontSize: '2.5rem',
-      fontWeight: 500,
+      fontWeight: 700,
+      color: PALETTE.textPrimary,
     },
     h4: {
       fontSize: '1.75rem',
       fontWeight: 500,
+      color: PALETTE.textPrimary,
     },
-    // Define other typography variants as needed
+    body1: {
+      color: PALETTE.textPrimary,
+    },
+    body2: {
+      color: PALETTE.textPrimary,
+    },
   },
   // You can also customize components globally here
   components: {
@@ -46,15 +53,20 @@ const theme = createTheme({
       styleOverrides: {
         root: {
           borderRadius: '8px',
-          textTransform: 'none', // Example: disable uppercase buttons
+          textTransform: 'none',
+          color: PALETTE.textPrimary,
+          backgroundColor: PALETTE.main,
+          '&:hover': {
+            backgroundColor: PALETTE.light,
+          },
         },
       },
     },
     MuiAppBar: {
       styleOverrides: {
         root: {
-          // Example: if you want all AppBars to have a specific elevation by default
-          // boxShadow: 'none', 
+          backgroundColor: PALETTE.background,
+          color: PALETTE.textPrimary,
         },
       },
     },

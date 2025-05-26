@@ -14,10 +14,20 @@ const Navbar = () => {
   };
 
   const menuItems = [
-    { text: 'Home', path: '/' },
-    { text: 'About', path: '/about' },
-    { text: 'Contact Us', path: '/contact' },
+    { text: 'Home', path: '#home' },
+    { text: 'About', path: '#about' },
+    { text: 'Projects', path: '#projects' },
+    { text: 'Contact Us', path: '#contact' },
   ];
+
+  const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, path: string) => {
+    e.preventDefault();
+    const id = path.replace('#', '');
+    const section = document.getElementById(id);
+    if (section) {
+      section.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
 
   const drawer = (
     <Box
@@ -29,7 +39,7 @@ const Navbar = () => {
       <List>
         {menuItems.map((item) => (
           <ListItem key={item.text} disablePadding>
-            <ListItemButton component={Link} to={item.path}>
+            <ListItemButton component="a" href={item.path} onClick={e => handleNavClick(e, item.path)}>
               <ListItemText primary={item.text} sx={{ color: theme.palette.text.primary }}/>
             </ListItemButton>
           </ListItem>
@@ -39,11 +49,11 @@ const Navbar = () => {
   );
 
   return (
-    <AppBar position="sticky" sx={{ top: 0, zIndex: theme.zIndex.appBar, backgroundColor: PALETTE.main }}>
+    <AppBar position="sticky" sx={{ top: 0, zIndex: theme.zIndex.appBar, backgroundColor: PALETTE.background }}>
       <Toolbar sx={{ justifyContent: 'space-between' }}>
         <Box sx={{ display: 'flex', alignItems: 'center', textDecoration: 'none' }} component={Link} to="/">
-          <img src="/anehan-logo.png" alt="Anehan Tech Logo" style={{ height: '40px', marginRight: '12px' }} />
-          <Typography variant="h6" component="div" sx={{ color: theme.palette.common.white, fontWeight: 'bold' }}>
+          <img src="/anehan.png" alt="Anehan Tech Logo" style={{ height: '40px', marginRight: '12px' }} />
+          <Typography variant="h6" component="div" sx={{ color: PALETTE.textPrimary, fontWeight: 'bold' }}>
             Anehan Tech
           </Typography>
         </Box>
@@ -54,7 +64,7 @@ const Navbar = () => {
               aria-label="open drawer"
               edge="end"
               onClick={handleDrawerToggle}
-              sx={{ color: theme.palette.common.white }}
+              sx={{ color: PALETTE.textPrimary }}
             >
               <MenuIcon />
             </IconButton>
@@ -68,17 +78,21 @@ const Navbar = () => {
               <Button
                 key={item.text}
                 sx={{
-                  color: theme.palette.common.white,
+                  color: PALETTE.textPrimary,
                   fontWeight: 500,
                   marginLeft: theme.spacing(2),
                   padding: theme.spacing(1, 2),
+                  backgroundColor: 'transparent',
+                  boxShadow: 'none',
                   '&:hover': {
-                    backgroundColor: PALETTE.light,
-                    color: theme.palette.text.primary,
+                    backgroundColor: 'transparent',
+                    textDecoration: 'underline',
+                    fontWeight: 700,
                   },
                 }}
-                component={Link}
-                to={item.path}
+                component="a"
+                href={item.path}
+                onClick={e => handleNavClick(e, item.path)}
               >
                 {item.text}
               </Button>
