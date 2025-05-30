@@ -27,15 +27,15 @@ const members = [
   },
 
   {
-    name: 'Jobert Mampusti',
+    name: 'Joerel Belen',
     role: 'Frontend Engineer',
-    image: '/members/jobert.jpg',
+    image: '/members/joerel.jpg',
     description: 'Implements modern and responsive user interfaces.'
   },
   {
-    name: 'Joerel Belen',
+    name: 'Jobert Mampusti',
     role: 'Backend Engineer',
-    image: '/members/joerel.jpg',
+    image: '/members/jobert.jpg',
     description: 'Designs and maintains server-side logic and APIs.'
   },
   {
@@ -44,6 +44,7 @@ const members = [
     image: '/members/agarin.png',
     description: 'Specializes in crafting intuitive and beautiful user experiences.'
   },
+
   {
     name: 'Kimberly Lapuz',
     role: 'Software Tester',
